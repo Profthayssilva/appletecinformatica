@@ -1,4 +1,3 @@
-
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
@@ -11,10 +10,20 @@ function revealOnScroll() {
     }
   });
 }
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+// =========================
+// Álbum de imagens
+// =========================
+
 const albumImages = document.querySelectorAll(".album-img");
 let albumIndex = 0;
 
 function changeAlbumImage() {
+  if (albumImages.length === 0) return;
+
   albumImages[albumIndex].classList.remove("active");
 
   albumIndex = (albumIndex + 1) % albumImages.length;
@@ -22,8 +31,6 @@ function changeAlbumImage() {
   albumImages[albumIndex].classList.add("active");
 }
 
-if (albumImages.length > 0) {
+if (albumImages.length > 1) {
   setInterval(changeAlbumImage, 3500);
 }
-
-window.addEventListener("scroll", revealOnScroll);
